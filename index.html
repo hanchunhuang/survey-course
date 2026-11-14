@@ -3,529 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>問卷設計與量表・互動課程</title>
+<title>社會工作研究方法・課程教材</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f7f6fb; --card:#fff; --ink:#14131f; --soft:#5b5f72; --faint:#8b899f; --line:#e6e4f2;
-  --p:#0a6cff; --ps:#e5f0ff; --a:#ff7a45; --as:#ffe9dd; --g:#12b76a; --gs:#e2f8ee; --r:#e5484d; --rs:#fde8e8;
-  --b:#00a3d9; --bs:#e0f6fd; --dark:#14131f;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#13121c;--card:#1d1c2b;--ink:#f1f0f8;--soft:#b3b1c6;--faint:#8582a0;--line:#2e2c42;--ps:#12284f;--as:#3a2a22;--gs:#12332a;--rs:#3b1d22;--bs:#0f2f3d;--p:#4da3ff;--dark:#0c0b13;}
-}
+:root{--ink:#111827;--soft:#4b5563;--faint:#9ca3af;--line:#e5e7eb;--blue:#0a6cff;--bg:#ffffff}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;line-height:1.7;font-size:17px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-header.hero{background:linear-gradient(135deg,#061a45 0%,#0a6cff 70%,#00c2ff 100%);color:#fff;padding:48px 0 70px}
-header.hero .eyebrow{font-weight:700;opacity:.85;letter-spacing:.04em;font-size:15px}
-header.hero h1{font-size:clamp(2em,6vw,3.4em);line-height:1.2;margin:10px 0 12px;font-weight:900}
-header.hero p{max-width:640px;opacity:.9;margin:0;font-size:1.08em}
-header.hero .teacher{display:inline-flex;align-items:center;gap:12px;margin-top:22px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 20px 8px 10px;backdrop-filter:blur(4px)}
-header.hero .teacher .t1{background:#fff;color:#0a6cff;font-weight:800;font-size:14px;border-radius:999px;padding:3px 12px}
-header.hero .teacher .t2{font-weight:900;font-size:1.15em;letter-spacing:.04em}
-nav.tabs{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line);margin-top:-30px;border-radius:20px 20px 0 0;box-shadow:0 -6px 24px rgba(20,19,31,.08)}
-nav.tabs .in{display:flex;gap:4px;overflow-x:auto;padding:10px 12px;scrollbar-width:none}
-nav.tabs .in::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;border:0;background:transparent;color:var(--soft);font:inherit;font-weight:700;font-size:15px;padding:10px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
-.tab:hover{background:var(--ps);color:var(--p)}
-.tab.on{background:var(--p);color:#fff}
-main{padding:28px 0 80px;min-height:60vh}
-section.pane{display:none}
-section.pane.on{display:block;animation:fade .35s ease}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){section.pane.on{animation:none}}
-h2{font-size:clamp(1.5em,3.6vw,2.1em);margin:0 0 6px;font-weight:900;line-height:1.25}
-h3{font-size:1.2em;margin:0 0 8px;font-weight:800}
-h4{margin:0 0 6px;font-size:1.02em}
-.kick{color:var(--p);font-weight:800;font-size:15px;margin-bottom:4px}
-.lede{color:var(--soft);margin:0 0 22px;max-width:720px}
-.sec{margin-top:40px}
-.grid{display:grid;gap:14px}
-.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr}.g4{grid-template-columns:1fr 1fr}
-@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
-.card p{margin:0;color:var(--soft)}
-.badge{display:inline-block;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px}
-.b-p{background:var(--ps);color:var(--p)}.b-a{background:var(--as);color:#c85a2c}.b-g{background:var(--gs);color:#0d8a4f}.b-r{background:var(--rs);color:var(--r)}.b-b{background:var(--bs);color:var(--b)}
-.note{color:var(--faint);font-size:14.5px;margin-top:10px}
-.tip{display:flex;gap:12px;background:var(--as);border-radius:14px;padding:14px 16px;margin-top:14px;color:var(--ink)}
-.tip b{color:#c85a2c}
-.btn{border:0;font:inherit;font-weight:700;cursor:pointer;border-radius:999px;padding:8px 18px;background:var(--p);color:#fff}
-.btn.ghost{background:var(--ps);color:var(--p)}
-.btn:hover{filter:brightness(1.08)}
-:focus-visible{outline:3px solid var(--a);outline-offset:2px}
-.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--card)}
-table{border-collapse:collapse;width:100%;min-width:560px}
-th{background:var(--p);color:#fff;text-align:left;padding:11px 14px;font-size:15px}
-td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--soft);font-size:15.5px;vertical-align:top}
-tr:last-child td{border-bottom:0}
-td:first-child{font-weight:800;color:var(--ink)}
-/* building cards */
-.build{position:relative;overflow:hidden}
-.build .no{font-family:'Manrope',sans-serif;font-weight:800;font-size:54px;line-height:1;color:var(--ps);position:absolute;right:14px;top:6px}
-.build h3{position:relative}
-.build a{color:var(--p);font-weight:800;text-decoration:none;cursor:pointer}
-/* stepper */
-.steps{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
-.stepbtn{flex:1 0 auto;min-width:120px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:700;border-radius:14px;padding:10px 12px;cursor:pointer;text-align:left}
-.stepbtn small{display:block;color:var(--faint);font-weight:500}
-.stepbtn .n{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--ps);color:var(--p);align-items:center;justify-content:center;font-size:13px;margin-right:6px}
-.stepbtn.on{background:var(--p);border-color:var(--p);color:#fff}
-.stepbtn.on small{color:#d6e8ff}.stepbtn.on .n{background:#fff}
-.stepdetail{margin-top:14px}
-.stepdetail ul{margin:8px 0 0;padding-left:20px;color:var(--soft)}
-.ex{border-left:4px solid var(--p);background:var(--ps);border-radius:0 12px 12px 0;padding:10px 14px;margin-top:12px;color:var(--ink)}
-/* bad good */
-.bg2{display:grid;gap:12px;grid-template-columns:1fr}
-@media(min-width:760px){.bg2{grid-template-columns:1fr 1fr}}
-.bad,.good{border-radius:14px;padding:14px 16px;border:1px solid}
-.bad{background:var(--rs);border-color:#f3c2c4}.good{background:var(--gs);border-color:#b7e8d0}
-.bad .lab{color:var(--r);font-weight:800;font-size:14px}.good .lab{color:#0d8a4f;font-weight:800;font-size:14px}
-.bad p,.good p{color:var(--ink);margin:4px 0 0}
-.why{color:var(--soft);font-size:14.5px;margin-top:6px}
-.hide{display:none}
-/* options demo */
-.opts{display:grid;gap:8px;margin-top:10px}
-.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:2px solid var(--line);border-radius:12px;cursor:pointer;background:var(--card);font:inherit;color:var(--ink);text-align:left;width:100%}
-.opt.hit{border-color:var(--r);background:var(--rs)}
-.opt.ok{border-color:var(--g);background:var(--gs)}
-/* funnel */
-.funnel{display:flex;flex-direction:column;align-items:center;gap:8px}
-.fun{border-radius:14px;padding:12px 16px;text-align:center;font-weight:700;color:#fff}
-.fun small{display:block;font-weight:500;opacity:.9}
-/* likert */
-.lk{width:100%}
-.lkrow{padding:14px 0;border-bottom:1px solid var(--line)}
-.lkrow:last-child{border-bottom:0}
-.lkq{font-weight:700;margin-bottom:8px}
-.lkopts{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.lkopts button{border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;border-radius:12px;padding:8px 2px;cursor:pointer;line-height:1.3}
-.lkopts button b{display:block;font-size:17px;font-family:'Manrope',sans-serif}
-.lkopts button.on{border-color:var(--p);background:var(--ps);color:var(--p)}
-.score{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin-top:14px}
-.score .box{border-radius:14px;padding:14px;text-align:center}
-.score .num{font-family:'Manrope',sans-serif;font-size:34px;font-weight:800;line-height:1.1}
-/* semantic */
-.sd{display:flex;align-items:center;gap:10px;padding:10px 0}
-.sd .l,.sd .r{flex:0 0 64px;font-weight:700;font-size:14px}.sd .r{text-align:right}
-.sd .dots{flex:1;display:flex;justify-content:space-between}
-.dot{width:24px;height:24px;flex:0 0 auto;border-radius:50%;border:2px solid var(--p);background:var(--card);cursor:pointer;padding:0}
-.dot.on{background:var(--p)}
-/* guttman */
-.stairs{display:flex;flex-direction:column;gap:8px}
-.stair{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);transition:margin .25s,background .25s,border-color .25s}
-.stair.on{background:var(--gs);border-color:var(--g)}
-.stair .k{font-family:'Manrope',sans-serif;font-weight:800;color:var(--p);width:22px}
-input[type=range]{width:100%;accent-color:var(--p)}
-/* misc */
-.checks label{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;cursor:pointer}
-.checks label:hover{background:var(--ps)}
-.checks input{margin-top:6px;width:18px;height:18px;accent-color:var(--p)}
-details.rv{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-top:10px;overflow:hidden}
-details.rv summary{cursor:pointer;padding:14px 16px;font-weight:700;list-style:none;display:flex;gap:10px;align-items:center}
-details.rv summary::-webkit-details-marker{display:none}
-details.rv summary .go{margin-left:auto;color:var(--a);font-size:14px;font-weight:800;flex:0 0 auto}
-details.rv[open] summary .go{display:none}
-details.rv .bd{padding:4px 16px 16px;border-top:1px dashed var(--line);padding-top:12px;color:var(--soft)}
-details.rv .bd b{color:var(--a)}
-.dark{background:var(--dark);color:#f1f0f8;border-radius:22px;padding:28px}
-.dark h3{color:#fff}.dark li{margin:6px 0;color:#d5d3e6}
-footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--faint);font-size:14px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;line-height:1.7}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+header{padding:72px 0 36px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--blue);font-weight:700;font-size:15px}
+h1{font-size:clamp(2em,6vw,3em);line-height:1.2;margin:10px 0 14px;font-weight:900}
+.bar{width:64px;height:6px;border-radius:3px;background:var(--blue);margin:18px 0}
+.teacher{font-weight:700;border-left:4px solid var(--blue);padding-left:12px}
+.lede{color:var(--soft);max-width:640px;margin:0 0 16px}
+main{padding:36px 0 60px}
+h2{font-size:1.1em;color:var(--faint);font-weight:700;margin:0 0 14px;letter-spacing:.04em}
+.list{display:grid;gap:14px}
+a.item{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:12px;padding:22px 24px;transition:border-color .15s,transform .15s}
+a.item:hover,a.item:focus-visible{border-color:var(--blue);transform:translateY(-2px);outline:none}
+.tag{display:inline-block;font-size:13px;font-weight:700;color:var(--blue);background:#eef4ff;border-radius:6px;padding:2px 10px;margin-right:6px}
+.item h3{margin:10px 0 6px;font-size:1.3em;font-weight:800}
+.item p{margin:0;color:var(--soft)}
+.go{display:inline-block;margin-top:12px;color:var(--blue);font-weight:700}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--faint);font-size:14px}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">社會工作研究方法 ・ 問卷設計與量表</div>
-    <h1>問卷設計，<br>就像蓋一棟房子</h1>
-    <p>藍圖、建材、驗屋、測量工具。四個階段，教你把「想知道的事」變成別人讀得懂、填得出來、資料用得上的問卷。</p>
-    <div class="teacher"><span class="t1">授課教師</span><span class="t2">黃瀚諄 老師</span></div>
+<header><div class="wrap">
+  <div class="eyebrow">課程教材</div>
+  <h1>社會工作研究方法</h1>
+  <div class="bar"></div>
+  <p class="lede">互動式教學網頁。點進去之後，用鍵盤左右鍵或畫面上的按鈕翻頁。</p>
+  <div class="teacher">授課教師　黃瀚諄 老師</div>
+</div></header>
+<main><div class="wrap">
+  <h2>單元列表</h2>
+  <div class="list">
+    <a class="item" href="questionnaire.html">
+      <span class="tag">單元一</span><span class="tag">互動網頁</span>
+      <h3>問卷設計與量表</h3>
+      <p>問卷設計的六個步驟、四大原則、四種誤差，以及李克特、語意差異、累進、等距量表。可以動手試算李克特量表。</p>
+      <span class="go">進入教材 →</span>
+    </a>
+    <a class="item" href="hypothesis-testing.html">
+      <span class="tag">單元二</span><span class="tag">互動投影片</span>
+      <h3>實驗設計與假設檢定</h3>
+      <p>先學對照組、隨機分派、前後測，再學 H0 與 H1、常態分配、α 與 p 值。全程用「法庭審判」和「正念團體」兩個例子，並說明沒有實驗設計時，假設檢定能說到哪裡。</p>
+      <span class="go">進入教材 →</span>
+    </a>
   </div>
-</header>
-
-<div class="wrap">
-<nav class="tabs" aria-label="章節"><div class="in" id="tabs"></div></nav>
-<main>
-
-<!-- 0 總覽 -->
-<section class="pane on" id="p0">
-  <div class="kick">先看地圖</div>
-  <h2>好問卷＝好建築</h2>
-  <p class="lede">一份好的問卷，要有周詳的規劃（藍圖）、優質的材料（好問題）、精準的施工（原則）和嚴格的驗屋（預試）。這門課沿著蓋房子的順序走。</p>
-  <div class="grid g2">
-    <div class="card build"><span class="no">1</span><span class="badge b-p">藍圖</span><h3 style="margin-top:8px">設計藍圖：六個步驟</h3><p>從「我到底想知道什麼」到修訂定稿，按部就班。</p><p style="margin-top:10px"><a data-go="1">進入章節 →</a></p></div>
-    <div class="card build"><span class="no">2</span><span class="badge b-a">建材</span><h3 style="margin-top:8px">建造原則：四大心法</h3><p>一題一事、簡單明瞭、中立客觀、選項周全，加上題目排列。</p><p style="margin-top:10px"><a data-go="2">進入章節 →</a></p></div>
-    <div class="card build"><span class="no">3</span><span class="badge b-r">驗屋</span><h3 style="margin-top:8px">結構檢測：誤差與優缺點</h3><p>四種誤差從哪裡來？問卷調查擅長什麼、不擅長什麼？</p><p style="margin-top:10px"><a data-go="3">進入章節 →</a></p></div>
-    <div class="card build"><span class="no">4</span><span class="badge b-g">工具</span><h3 style="margin-top:8px">精測工具：態度量表</h3><p>李克特、語意差異、累進、等距量表，並可以動手試算。</p><p style="margin-top:10px"><a data-go="4">進入章節 →</a></p></div>
-  </div>
-
-  <div class="sec">
-    <div class="kick">和前面課程的連結</div>
-    <h2>從「操作化」走到「題目」</h2>
-    <p class="lede">之前學過，抽象概念要先概念化、拆面向，再操作化成指標。問卷題目，就是量化研究操作化最後長出來的東西。</p>
-    <div class="card">
-      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:800">
-        <span class="badge b-p" style="font-size:15px">概念：服務滿意度</span>→
-        <span class="badge b-p" style="font-size:15px">面向：態度、內容、環境、時間</span>→
-        <span class="badge b-a" style="font-size:15px">指標＋題目</span>→
-        <span class="badge b-g" style="font-size:15px">量表分數</span>
-      </div>
-      <div class="tblwrap" style="margin-top:14px"><table>
-        <tr><th>面向</th><th>題目（示意）</th></tr>
-        <tr><td>服務態度</td><td>「社工人員對我很有禮貌。」</td></tr>
-        <tr><td>服務內容</td><td>「據點的活動內容符合我的需要。」</td></tr>
-        <tr><td>服務環境</td><td>「據點的環境整潔、安全。」</td></tr>
-        <tr><td>服務時間</td><td>「據點開放的時間，我覺得方便。」</td></tr>
-      </table></div>
-      <p class="note">題目為教學自編示意。每個面向都要有題目對應，面向沒有題目，就等於沒測到。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 1 藍圖 -->
-<section class="pane" id="p1">
-  <div class="kick">章節一</div>
-  <h2>設計藍圖：問卷設計的六個步驟</h2>
-  <p class="lede">一個清晰的藍圖是成功的一半。點一下步驟，看每一步要做什麼。</p>
-  <div class="steps" id="steps" role="tablist"></div>
-  <div class="card stepdetail" id="stepdetail" aria-live="polite"></div>
-
-  <div class="sec">
-    <div class="kick">步驟三的延伸</div>
-    <h3>資料蒐集方式，會影響題目怎麼寫</h3>
-    <div class="tblwrap"><table>
-      <tr><th>方式</th><th>怎麼進行</th><th>設計時要注意</th></tr>
-      <tr><td>面訪</td><td>訪員念題目給受訪者聽</td><td>適合較複雜的流程，訪員要受訓，避免語氣影響答案</td></tr>
-      <tr><td>自填問卷</td><td>受訪者自行閱讀填寫</td><td>題意必須一看就懂，版面要清楚</td></tr>
-      <tr><td>電話訪問</td><td>用電話逐題詢問</td><td>選項不能太多，受訪者記不住</td></tr>
-      <tr><td>網路問卷</td><td>透過連結線上填答</td><td>成本低、效率高，但有數位落差問題</td></tr>
-    </table></div>
-  </div>
-  <div class="sec">
-    <div class="kick">步驟二的延伸</div>
-    <h3>誰來填，決定怎麼寫</h3>
-    <div class="grid g2">
-      <div class="card"><span class="badge b-a">對象是長輩</span><p style="margin-top:8px">字體放大、用語口語化、一頁不要塞太多題。</p></div>
-      <div class="card"><span class="badge b-b">對象是專業社工</span><p style="margin-top:8px">可以使用專業術語，也可以問比較細的實務問題。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 2 原則 -->
-<section class="pane" id="p2">
-  <div class="kick">章節二</div>
-  <h2>建造原則：確保問卷品質的四大心法</h2>
-  <p class="lede">好的問題引導出真實的資訊，壞的問題只會帶來混亂的數據。口訣：<b>一題一事、簡單明瞭、中立客觀、選項周全</b>。</p>
-
-  <div class="grid" id="principles"></div>
-
-  <div class="sec">
-    <div class="kick">動手試試</div>
-    <h3>選項要互斥：你的年齡是？</h3>
-    <div class="card">
-      <p>下面這個題目，選項有重疊。點一個選項，看看如果你正好是 30 歲，會發生什麼事。</p>
-      <div class="opts" id="ageBad"></div>
-      <p id="ageMsg" class="why" style="min-height:26px"></p>
-      <button class="btn ghost" id="ageFix" style="margin-top:6px">修正選項</button>
-    </div>
-  </div>
-
-  <div class="sec">
-    <div class="kick">題目排列</div>
-    <h3>漏斗式：由淺入深，敏感題放後面</h3>
-    <div class="card"><div class="funnel">
-      <div class="fun" style="background:#0a6cff;width:100%">① 簡單、不敏感<small>基本資料、一般行為，例如「你多久去一次社區據點？」</small></div>
-      <div class="fun" style="background:#2f8cff;width:84%">② 逐漸聚焦<small>具體的看法與經驗，例如對活動內容的滿意程度</small></div>
-      <div class="fun" style="background:#ff7a45;width:68%">③ 敏感題目<small>收入、違規行為，等建立信任感再問</small></div>
-    </div></div>
-  </div>
-
-  <div class="sec">
-    <div class="kick">題目改寫工作坊</div>
-    <h3>這些題目哪裡有問題？先想，再點開看</h3>
-    <div id="workshop"></div>
-  </div>
-</section>
-
-<!-- 3 誤差 -->
-<section class="pane" id="p3">
-  <div class="kick">章節三</div>
-  <h2>結構檢測：識別問卷的潛在誤差與權衡</h2>
-  <p class="lede">任何測量工具都有誤差。知道誤差從哪裡來，才能在設計和分析時做出更明智的判斷。</p>
-  <div class="grid g2" id="errors"></div>
-
-  <div class="sec">
-    <h3>問卷調查的優點與缺點</h3>
-    <div class="grid g2">
-      <div class="card" style="border-top:5px solid var(--g)"><span class="badge b-g">優點</span>
-        <ul style="color:var(--soft);padding-left:20px;margin:10px 0 0">
-          <li><b style="color:var(--ink)">高效率：</b>短時間內蒐集大量資料</li>
-          <li><b style="color:var(--ink)">低成本：</b>相對訪談等方式成本較低</li>
-          <li><b style="color:var(--ink)">標準化：</b>答案可以直接比較與統計分析</li>
-          <li><b style="color:var(--ink)">匿名性：</b>針對敏感議題，受訪者比較敢說真話</li></ul></div>
-      <div class="card" style="border-top:5px solid var(--r)"><span class="badge b-r">缺點</span>
-        <ul style="color:var(--soft);padding-left:20px;margin:10px 0 0">
-          <li><b style="color:var(--ink)">資訊表面：</b>只能得到片段資訊，無法深入了解脈絡與生命經驗</li>
-          <li><b style="color:var(--ink)">缺乏彈性：</b>題目印出去就固定，不能像訪談一樣追問</li>
-          <li><b style="color:var(--ink)">品質不一：</b>受訪者可能隨便亂填，或看不懂題目卻硬選一個</li></ul></div>
-    </div>
-    <div class="tip"><span>💡</span><span>想深入了解經驗與脈絡時，質化訪談更合適。有些研究會兩種都用：先訪談找出重要概念，再把它設計成問卷題目。</span></div>
-  </div>
-</section>
-
-<!-- 4 量表 -->
-<section class="pane" id="p4">
-  <div class="kick">章節四</div>
-  <h2>精測工具：把抽象態度變成可衡量的數字</h2>
-  <p class="lede">態度是看不見、摸不著的心理傾向，所以要用量表間接測量。量表的目的，是把抽象概念轉成可量化、可比較的資料。</p>
-
-  <h3>態度的三個面向</h3>
-  <p class="note" style="margin:0 0 10px">以「對身心障礙者的態度」為例。</p>
-  <div class="grid g3" id="att"></div>
-
-  <div class="sec">
-    <div class="kick">最實用的工具</div>
-    <h3>李克特量表（Likert Scale）：動手試算</h3>
-    <p class="lede" style="margin-bottom:12px">受訪者針對每個陳述句表達同意程度，加總或平均後，得到整體態度分數。請對下面三題各選一個答案。</p>
-    <div class="card"><div class="lk" id="likert"></div>
-      <div class="score" id="likScore"></div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn ghost" id="lkAll4">模擬「一路都選同意（4）」</button>
-        <button class="btn ghost" id="lkReset">重新選</button></div>
-      <p class="note">第一題是負向題，要<b>反向計分</b>（5→1、4→2、3→3、2→4、1→5），分數越高，才代表態度越正向。正反題交錯，也可以避免受訪者不經思考一路選同一個答案。</p>
-    </div>
-  </div>
-
-  <div class="sec">
-    <h3>語意差異量表（Semantic Differential）</h3>
-    <p class="lede" style="margin-bottom:12px">兩端放一對相反的形容詞，中間分成幾格，適合測量對某個對象的<b>整體印象</b>。點圓點作答。</p>
-    <div class="card"><b>你對「社會工作」這個職業的印象是？</b><div id="sd"></div></div>
-  </div>
-
-  <div class="sec">
-    <h3>累進量表（Guttman Scale）：像爬樓梯</h3>
-    <p class="lede" style="margin-bottom:12px">題目有難度順序，同意較難的題目，就一定會同意較簡單的。拖動滑桿，看「爬到第幾階」。</p>
-    <div class="card">
-      <b>測量「對遊民的接納程度」（難度由低到高）</b>
-      <div class="stairs" id="stairs" style="margin-top:12px"></div>
-      <input type="range" id="gsl" min="0" max="5" value="0" aria-label="爬到第幾階" style="margin-top:14px">
-      <p id="gmsg" class="why"></p>
-      <p class="note">理論上很完整，但實際上要建構出完美的累進量表很困難，因為現實中常有人同意難題、卻不同意簡單題。</p>
-    </div>
-  </div>
-
-  <div class="sec">
-    <h3>等距量表（Thurstone Scale）：最早的量表，但製作很複雜</h3>
-    <div class="grid g4">
-      <div class="card"><span class="badge b-p">1</span><p style="margin-top:8px">請一群評審，把大量題目依態度傾向排序（從極端負面到極端正面，分成 11 等分）。</p></div>
-      <div class="card"><span class="badge b-p">2</span><p style="margin-top:8px">保留評審意見一致的題目。</p></div>
-      <div class="card"><span class="badge b-p">3</span><p style="margin-top:8px">受訪者填答時，只要勾選自己同意的題目。</p></div>
-      <div class="card"><span class="badge b-p">4</span><p style="margin-top:8px">取同意題目的中位數，作為態度分數。</p></div>
-    </div>
-    <p class="note">因為製作成本高，現在比較少用。</p>
-  </div>
-
-  <div class="sec">
-    <h3>四種量表比較</h3>
-    <div class="tblwrap"><table style="min-width:720px">
-      <tr><th>量表</th><th>怎麼作答</th><th>適合用在</th><th>特點</th></tr>
-      <tr><td>李克特</td><td>同意程度（5 或 7 點）</td><td>測態度、看法</td><td>最常用、最容易做</td></tr>
-      <tr><td>語意差異</td><td>在一對形容詞間勾選</td><td>測對某對象的整體印象</td><td>題目短、好填</td></tr>
-      <tr><td>累進</td><td>同意到哪一階</td><td>測接納程度、社會距離</td><td>題目有難度順序，一個數字代表整體</td></tr>
-      <tr><td>等距</td><td>勾選同意的題目</td><td>測態度傾向</td><td>製作過程繁複，現在少用</td></tr>
-    </table></div>
-  </div>
-</section>
-
-<!-- 5 回顧 -->
-<section class="pane" id="p5">
-  <div class="kick">本章小結</div>
-  <h2>你的問卷建築指南：重點回顧</h2>
-  <p class="lede">問卷是社會工作研究與實務評估的重要工具，紮實的設計，是獲取有意義資訊的基石。</p>
-  <div class="grid g4">
-    <div class="card"><span class="badge b-p">章節一</span><h4 style="margin-top:8px">設計藍圖</h4><p>遵循六大步驟，從目的到定稿。預試一定要做。</p></div>
-    <div class="card"><span class="badge b-a">章節二</span><h4 style="margin-top:8px">建造原則</h4><p>一題一事、簡單明瞭、中立客觀、選項周全。</p></div>
-    <div class="card"><span class="badge b-r">章節三</span><h4 style="margin-top:8px">結構檢測</h4><p>認識四種誤差，客觀評估優缺點。</p></div>
-    <div class="card"><span class="badge b-g">章節四</span><h4 style="margin-top:8px">精測工具</h4><p>用態度量表把抽象概念變成數字，李克特最常用。</p></div>
-  </div>
-
-  <div class="sec">
-    <div class="kick">課堂活動・20 分鐘</div>
-    <h2>換你蓋蓋看</h2>
-    <p class="lede">研究目的：「了解獨居長者使用社區關懷據點的滿意度」。請小組完成：</p>
-    <div class="card checks" id="tasks">
-      <label><input type="checkbox"><span>列出 3～4 個「滿意度」的面向。</span></label>
-      <label><input type="checkbox"><span>每個面向，用李克特五點量表寫 1～2 題，並至少放 1 題負向題。</span></label>
-      <label><input type="checkbox"><span>設計 1 題基本資料（年齡），確認選項周延且互斥。</span></label>
-      <label><input type="checkbox"><span>決定資料蒐集方式，並說明為什麼適合長者。</span></label>
-      <label><input type="checkbox"><span>互相交換，各找 2 位同學來預試，記錄他們的困惑。</span></label>
-    </div>
-    <details class="rv"><summary>參考做法<span class="go">點開看</span></summary><div class="bd">
-      <p><b>面向：</b>服務態度、活動內容、環境設施、開放時間。</p>
-      <p><b>題目（自編示意）：</b>「工作人員對我很有禮貌。」「活動內容常常讓我覺得無聊。」（負向題，反向計分）「據點的環境讓我覺得安全。」「據點開放的時間，我覺得方便。」</p>
-      <p><b>年齡：</b>A. 65～69 歲　B. 70～74 歲　C. 75～79 歲　D. 80 歲以上。</p>
-      <p><b>方式：</b>面訪。長者可能視力不佳或不習慣自己填，由訪員念題目較穩妥。</p></div></details>
-  </div>
-
-  <div class="sec dark">
-    <h3>送出問卷前的最後檢查</h3>
-    <ul>
-      <li>每一題，都和研究目的有關嗎？</li>
-      <li>有沒有一題同時問了兩件事？</li>
-      <li>有沒有雙重否定、專業術語、誘導的說法？</li>
-      <li>選項周延且互斥嗎？</li>
-      <li>簡單題在前、敏感題在後嗎？</li>
-      <li>負向題有反向計分嗎？</li>
-      <li>真的找 5～10 位符合條件的人預試過了嗎？</li>
-    </ul>
-  </div>
-</section>
-
-</main>
-</div>
-<footer><div class="wrap">社會工作研究方法・授課教師 黃瀚諄老師。題目、案例皆為教學示意。</div></footer>
-
-<script>
-const TABS=['總覽','① 設計藍圖','② 建造原則','③ 結構檢測','④ 精測工具','重點與活動'];
-const tabsEl=document.getElementById('tabs');
-TABS.forEach((t,i)=>{const b=document.createElement('button');b.className='tab'+(i===0?' on':'');b.textContent=t;b.onclick=()=>show(i);tabsEl.appendChild(b);});
-function show(i){
-  document.querySelectorAll('.pane').forEach((p,k)=>p.classList.toggle('on',k===i));
-  document.querySelectorAll('.tab').forEach((b,k)=>{b.classList.toggle('on',k===i); if(k===i) b.scrollIntoView({inline:'center',block:'nearest'});});
-  try{history.replaceState(null,'','#t'+i)}catch(e){}
-  const top=document.querySelector('nav.tabs').offsetTop; window.scrollTo({top:Math.max(0,top-4),behavior:'smooth'});
-}
-document.querySelectorAll('[data-go]').forEach(a=>a.onclick=()=>show(+a.dataset.go));
-if(/^#t[0-5]$/.test(location.hash)){ show(+location.hash.slice(2)); }
-
-/* steps */
-const STEPS=[
- ['確定目的','研究目的與問題',['先問自己：「我到底想知道什麼？」這是最重要的起點。','所有題目，都要圍繞這個核心。'],'想了解「獨居長者使用社區關懷據點的滿意度」，那每一題都要和這個目的相關。'],
- ['界定對象','研究對象與抽樣',['確定「誰來填」，會影響問卷的用字遣詞。','對象是長輩：字體放大、用語口語化。','對象是專業社工：可以使用專業術語。'],'同一份滿意度調查，給長者用「您覺得這裡好不好？」，給社工督導可以用「您如何評估服務品質？」。'],
- ['決定方式','資料蒐集方式',['常見方式：面訪、自填、電話、網路。','不同方式，會影響問卷長度與題型。'],'電話訪問不適合太多選項的題目，因為受訪者記不住。'],
- ['擬定初稿','擬定問卷初稿',['策略：先列出想測量的「概念」或「面向」，再逐一發展題目。','每個面向，都要有題目對應。'],'「服務滿意度」可以拆為：服務態度、服務內容、服務環境、服務時間等面向。'],
- ['預試','進行預試（Pilot Test）',['找 5～10 位符合條件的人試填，並請他們說出填答時的困惑。','常見問題：「這題看不懂」「選項沒有我要的答案」「這兩題好像在問一樣的事」。','⚠️ 這個步驟非常重要，可以抓出很多盲點。'],'請一位 70 歲的長者試填，發現「社區照顧關懷據點」這個詞她聽不懂，只說過「活動中心」。就改用她的說法。'],
- ['修訂定稿','修訂定稿',['根據預試結果，修改題目、調整順序、優化版面。','確認題目順序流暢、版面清楚，就可以正式施測。'],'把「活動中心」寫進題目，把兩題意思重複的合併成一題。']
-];
-const sb=document.getElementById('steps'), sd=document.getElementById('stepdetail');
-function setStep(i){
-  [...sb.children].forEach((b,k)=>b.classList.toggle('on',k===i));
-  const s=STEPS[i];
-  sd.innerHTML='<span class="badge b-p">步驟 '+(i+1)+' / 6</span><h3 style="margin-top:8px">'+s[1]+'</h3><ul>'+s[2].map(x=>'<li>'+x+'</li>').join('')+'</ul><div class="ex"><b>舉例：</b>'+s[3]+'</div><div style="display:flex;gap:8px;margin-top:14px">'+(i>0?'<button class="btn ghost" onclick="setStep('+(i-1)+')">← 上一步</button>':'')+(i<5?'<button class="btn" onclick="setStep('+(i+1)+')">下一步 →</button>':'')+'</div>';
-}
-STEPS.forEach((s,i)=>{const b=document.createElement('button');b.className='stepbtn';b.innerHTML='<span class="n">'+(i+1)+'</span>'+s[0];b.onclick=()=>setStep(i);sb.appendChild(b);});
-setStep(0);
-
-/* principles */
-const PR=[
- ['心法一：一題只問一件事',[['「您對本機構的服務態度和專業能力滿意嗎？」','同時問了兩件事。受訪者若對態度滿意、對專業不滿意，就不知道怎麼答。'],'拆成兩題：「您對服務態度滿意嗎？」＋「您對專業能力滿意嗎？」']],
- ['心法二：用語簡單明瞭',[['「您是否不反對政府增加長照預算？」','雙重否定，令人困惑。'],'「您是否贊成政府增加長照預算？」'],[['「您認為去機構化政策是否適當？」','對一般民眾使用專業術語。'],'改成具體描述：「讓身心障礙者住在社區，而不是大型機構」。']],
- ['心法三：保持中立，不要誘導',[['「大多數專家都認為社工薪資過低，您同意嗎？」','先搬出權威來施壓，誘導受訪者回答。'],'「關於目前社工薪資水準，您的看法是？」']],
- ['心法四：選項要周延且互斥',[['年齡：A. 20 歲以下　B. 20-30 歲　C. 30-40 歲','選項重疊（30 歲的人可以選 B，也可以選 C），而且沒有涵蓋 41 歲以上的人。'],'A. 20 歲以下　B. 20-29 歲　C. 30-39 歲　D. 40 歲以上。周延：涵蓋所有可能答案（常加「其他」）。互斥：選項之間不重疊。']]
-];
-const pe=document.getElementById('principles');
-PR.forEach(p=>{
-  const c=document.createElement('div');c.className='card';
-  let h='<h3>'+p[0]+'</h3>';
-  p.slice(1).forEach((x,k)=>{
-    h+='<div class="bg2" style="margin-top:10px"><div class="bad"><div class="lab">✗ 錯誤示範</div><p>'+x[0][0]+'</p><div class="why">'+x[0][1]+'</div></div><div class="good"><div class="lab">✓ 正確做法</div><p class="rev hide">'+x[1]+'</p><button class="btn ghost" style="margin-top:6px" onclick="this.previousElementSibling.classList.remove(\'hide\');this.remove()">點開看改法</button></div></div>';
-  });
-  c.innerHTML=h;pe.appendChild(c);
-});
-
-/* age */
-const ageBad=document.getElementById('ageBad'),ageMsg=document.getElementById('ageMsg');
-function ageRender(good){
-  const L=good?['A. 20 歲以下','B. 20–29 歲','C. 30–39 歲','D. 40 歲以上']:['A. 20 歲以下','B. 20–30 歲','C. 30–40 歲'];
-  ageBad.innerHTML='';
-  L.forEach(t=>{const b=document.createElement('button');b.className='opt';b.textContent=t;b.onclick=()=>{
-    if(good){[...ageBad.children].forEach(x=>x.classList.remove('ok'));b.classList.add('ok');ageMsg.textContent=(t.startsWith('C')?'30 歲的人，只有 C 一個正確選項。':'再選 C，看看 30 歲的人怎麼答。');}
-    else{[...ageBad.children].forEach((x,k)=>x.classList.toggle('hit',k===1||k===2));ageMsg.textContent='30 歲的人，B 和 C 都對，不知道該選哪一個。這就是選項不互斥。';}
-  };ageBad.appendChild(b);});
-}
-ageRender(false);
-document.getElementById('ageFix').onclick=function(){ageRender(true);ageMsg.textContent='已修正：選項互斥，也涵蓋所有年齡。';this.remove();};
-
-/* workshop */
-const WS=[
- ['「您對本社區的環境和交通是否滿意？」','一題問了兩件事（環境、交通）。','拆成兩題，分別詢問環境與交通。'],
- ['「您是否不同意取消長者免費搭車的政策？」','雙重否定。','「您是否同意保留長者免費搭車的政策？」'],
- ['「為了孩子好，您是否支持政府加強對家暴加害人的處罰？」','加了「為了孩子好」，是誘導。','「您對政府加強處罰家暴加害人的看法是？」，選項由「非常不支持」到「非常支持」。'],
- ['「您的月收入是？ A. 2 萬以下　B. 2 萬～3 萬　C. 3 萬以上」','選項重疊（剛好 2 萬或 3 萬時），而且是敏感題，放在問卷最前面會嚇到人。','選項改成「2 萬以下／20,001～30,000／30,001 以上」，並把收入題放在問卷最後面。'],
- ['「您認為社區賦權做得好不好？」','對一般民眾用了專業術語。','改成具體描述，例如：「社區居民能不能參與決定社區的事？」']
-];
-const w=document.getElementById('workshop');
-WS.forEach((x,i)=>{
-  const d=document.createElement('details');d.className='rv';
-  d.innerHTML='<summary><span class="badge b-p">題 '+(i+1)+'</span>'+x[0]+'<span class="go">點開看答案</span></summary><div class="bd"><p><b>問題：</b>'+x[1]+'</p><p><b>改法：</b>'+x[2]+'</p></div>';
-  w.appendChild(d);
-});
-
-/* errors */
-const ER=[
- ['涵蓋誤差','Coverage Error','抽樣名單沒有涵蓋所有目標群體。','用網路問卷調查長者，會排除不會上網的長者。','b-b'],
- ['無反應誤差','Nonresponse Error','有些人拒絕填答或找不到人，而這些人和有填答的人，可能有系統性差異。','調查家暴受害者，還在創傷中的人可能不願談。願意受訪的，可能是復原較好的人。','b-a'],
- ['測量誤差','Measurement Error','題目本身造成的問題，包括題意不清、誘導作答，以及受訪者為了面子美化答案（社會期許偏誤）。','問「您有沒有打過小孩？」，很多人不會說實話。','b-r'],
- ['抽樣誤差','Sampling Error','即使是隨機抽樣，樣本統計值和母群體參數之間仍有差距。','統計上不可避免，但增加樣本數，可以降低。','b-g']
-];
-const ee=document.getElementById('errors');
-ER.forEach(x=>{
-  const c=document.createElement('div');c.className='card';
-  c.innerHTML='<span class="badge '+x[4]+'">'+x[1]+'</span><h3 style="margin-top:8px">'+x[0]+'</h3><p>'+x[2]+'</p><div class="ex"><b>舉例：</b>'+x[3]+'</div>';
-  ee.appendChild(c);
-});
-
-/* attitude */
-const AT=[['認知（Cognitive）','我相信什麼','「身心障礙者有能力獨立生活。」'],['情感（Affective）','我感覺如何','「和身心障礙者相處，讓我感到自在。」'],['行為傾向（Behavioral）','我打算怎麼做','「我願意和身心障礙者當鄰居。」']];
-const at=document.getElementById('att');
-AT.forEach(x=>{const c=document.createElement('div');c.className='card';c.innerHTML='<h4>'+x[0]+'</h4><p style="color:var(--p);font-weight:800">'+x[1]+'</p><div class="ex" style="margin-top:10px">'+x[2]+'</div>';at.appendChild(c);});
-
-/* likert */
-const LQ=[['老年人是社會的負擔',true],['老年人的智慧值得學習',false],['我願意花時間陪伴老人',false]];
-const LAB=['非常不同意','不同意','普通','同意','非常同意'];
-let LV=[0,0,0];
-function likRender(){
-  const el=document.getElementById('likert');el.innerHTML='';
-  LQ.forEach((q,i)=>{
-    const r=document.createElement('div');r.className='lkrow';
-    r.innerHTML='<div class="lkq">'+(i+1)+'. '+q[0]+(q[1]?' <span class="badge b-r">負向題</span>':'')+'</div><div class="lkopts"></div>';
-    const o=r.querySelector('.lkopts');
-    LAB.forEach((l,k)=>{const b=document.createElement('button');b.innerHTML='<b>'+(k+1)+'</b>'+l;b.className=LV[i]===k+1?'on':'';b.onclick=()=>{LV[i]=k+1;likRender();};o.appendChild(b);});
-    el.appendChild(r);
-  });
-  const sc=document.getElementById('likScore');
-  if(LV.every(v=>v>0)){
-    const raw=LV.reduce((a,b)=>a+b,0);
-    const fix=LV.map((v,i)=>LQ[i][1]?6-v:v);const tot=fix.reduce((a,b)=>a+b,0);
-    sc.innerHTML='<div class="box" style="background:var(--rs)"><div style="font-weight:700">沒反向計分（錯誤）</div><div class="num" style="color:var(--r)">'+raw+'</div><div class="note">負向題直接加總，分數會失真</div></div><div class="box" style="background:var(--gs)"><div style="font-weight:700">反向計分後（正確）</div><div class="num" style="color:#0d8a4f">'+tot+'</div><div class="note">第 1 題 '+LV[0]+' → '+fix[0]+'；總分 3～15，平均 '+(tot/3).toFixed(1)+'</div></div>';
-  } else sc.innerHTML='<div class="box" style="grid-column:1/-1;background:var(--ps);color:var(--p);font-weight:700">三題都選完，就會顯示分數</div>';
-}
-document.getElementById('lkAll4').onclick=()=>{LV=[4,4,4];likRender();};
-document.getElementById('lkReset').onclick=()=>{LV=[0,0,0];likRender();};
-likRender();
-
-/* semantic */
-const SD=[['專業的','不專業的'],['有價值的','沒價值的'],['輕鬆的','辛苦的']];
-const sdEl=document.getElementById('sd');
-SD.forEach(p=>{
-  const r=document.createElement('div');r.className='sd';
-  r.innerHTML='<span class="l">'+p[0]+'</span><div class="dots"></div><span class="r">'+p[1]+'</span>';
-  const d=r.querySelector('.dots');
-  for(let k=0;k<7;k++){const b=document.createElement('button');b.className='dot';b.setAttribute('aria-label',p[0]+'到'+p[1]+'第'+(k+1)+'格');b.onclick=()=>{[...d.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');};d.appendChild(b);}
-  sdEl.appendChild(r);
-});
-
-/* guttman */
-const GQ=['我認為政府應該協助遊民','我願意捐款給服務遊民的機構','我願意當志工服務遊民','我願意讓遊民收容所設在我家附近','我願意邀請遊民到我家吃飯'];
-const st=document.getElementById('stairs');
-GQ.forEach((q,i)=>{const d=document.createElement('div');d.className='stair';d.style.marginLeft=(i*14)+'px';d.innerHTML='<span class="k">'+(i+1)+'</span><span>'+q+'</span>';st.appendChild(d);});
-const gsl=document.getElementById('gsl'),gmsg=document.getElementById('gmsg');
-function gup(){const n=+gsl.value;[...st.children].forEach((d,i)=>d.classList.toggle('on',i<n));gmsg.textContent=n===0?'目前：一題都不同意，態度分數 0。':'目前：同意第 '+n+' 題，理論上也會同意前面所有題目。態度分數 '+n+' / 5。';}
-gsl.oninput=gup;gup();
-</script>
+</div></main>
+<footer><div class="wrap">社會工作研究方法・授課教師 黃瀚諄老師。教材中的題目、數字皆為教學示意。</div></footer>
 </body>
 </html>
